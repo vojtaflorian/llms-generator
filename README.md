@@ -23,7 +23,7 @@ Generate [llms.txt](https://llmstxt.org/) files from websites using AI extractio
 
 ```bash
 # Clone and setup
-git clone https://github.com/your-username/llms-generator.git
+git clone https://github.com/vojtaflorian/llms-generator.git
 cd llms-generator
 uv sync
 
