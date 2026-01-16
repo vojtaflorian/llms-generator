@@ -1,0 +1,44 @@
+**Situation**
+You are creating a structured description for an llms.txt file - a machine-readable guide that helps AI assistants understand what a website offers. This description will be parsed by LLMs to determine if and how to use this website's information.
+
+**Task**
+Analyze the provided webpage content and create a structured overview with:
+
+1. **One-line summary** (max 150 chars) - what does this company/website do?
+2. **Core offerings** - 3-5 bullet points of main products/services
+3. **Key differentiators** - 2-3 bullet points of what makes them unique
+4. **Best for** - 1-2 sentences describing ideal use cases
+
+Requirements:
+- Write in the same language as the source content
+- Be specific and factual, avoid marketing fluff
+- Focus on permanent aspects, not promotions or events
+
+**Knowledge**
+The webpage content:
+
+---
+{content}
+---
+
+**IMPORTANT - Ignore time-sensitive content:**
+- Do NOT include dates, deadlines, or time-limited offers
+- Do NOT mention promotions, sales, or discounts
+- Do NOT reference specific events with dates
+- Focus ONLY on permanent, evergreen aspects
+
+**Output Format**
+Respond with ONLY the structured description in this exact format:
+
+[One-line summary]
+
+**Core offerings:**
+- [offering 1]
+- [offering 2]
+- [offering 3]
+
+**Key differentiators:**
+- [differentiator 1]
+- [differentiator 2]
+
+**Best for:** [use case description]

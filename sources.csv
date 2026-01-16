@@ -1,0 +1,62 @@
+id,url,output,chunk_method,chunk_size,prompt_file,enabled,include_pattern,exclude_pattern,content_selector
+
+# =============================================================================
+# LLMS.TXT GENERATOR - SOURCES CONFIGURATION
+# =============================================================================
+#
+# COLUMNS:
+#   id              - Unique identifier for this source
+#   url             - Source URL (or sitemap.xml URL for sitemap method)
+#   output          - Output filename (saved to output/llms/)
+#   chunk_method    - Processing strategy (see below)
+#   chunk_size      - Max pages/items to process
+#   prompt_file     - AI prompt template (in prompts/)
+#   enabled         - true/false
+#   include_pattern - (sitemap only) Glob pattern for URLs to include
+#   exclude_pattern - (sitemap only) Glob pattern for URLs to exclude
+#   content_selector- (optional) CSS selector for main content
+#
+# -----------------------------------------------------------------------------
+# CHUNK METHODS - How content is fetched and split for AI processing:
+# -----------------------------------------------------------------------------
+#
+#   single      - Fetch single page, process as one chunk
+#                 Use for: Contact pages, About us, simple content
+#                 chunk_size: ignored (always 1)
+#
+#   paginated   - Fetch page + follow pagination links (?page=N, /page/N)
+#                 Use for: Product listings, search results, blog archives
+#                 chunk_size: max number of pages to fetch
+#
+#   recursive   - Fetch page + crawl internal links (same domain)
+#                 Use for: Category trees, documentation sections
+#                 chunk_size: max number of subpages to crawl
+#
+#   alphabetical- Split content by first letter (A-D, E-H...)
+#                 Use for: Glossaries, brand lists, dictionaries
+#                 chunk_size: items per chunk before splitting
+#
+#   sitemap     - Parse sitemap.xml and fetch listed URLs
+#                 Use for: Large sites, complete documentation
+#                 chunk_size: max URLs to process
+#                 Supports include_pattern/exclude_pattern for filtering
+#
+# -----------------------------------------------------------------------------
+# EXAMPLES:
+# -----------------------------------------------------------------------------
+#
+# Simple single page:
+# kontakt,https://example.com/kontakt,kontakt.md,single,1,default.txt,true,,,
+#
+# Page with CSS selector for content extraction:
+# faq,https://example.com/faq,faq.md,single,1,default.txt,true,,,.faq-content
+#
+# Paginated product list (max 5 pages):
+# products,https://example.com/products,products.md,paginated,5,default.txt,true,,,
+#
+# Category tree with subpages (max 10 pages):
+# docs,https://example.com/docs,docs.md,recursive,10,default.txt,true,,,.main-content
+#
+# Sitemap with URL filtering (max 100 URLs, only /docs/*, exclude /blog/*):
+# docs,https://example.com/sitemap.xml,docs.md,sitemap,100,default.txt,true,**/docs/**,**/blog/**,
+
